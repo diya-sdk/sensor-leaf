@@ -4,15 +4,78 @@
 <polymer-element name="sensor-leaf" attributes="leafCount" extends="sensor-base">
 	<template>
 		<style>
+			:host{
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+
+				font-size: 1.7em;
+
+				overflow: hidden;
+			}
+
+			p#label{
+				margin: 0px;
+				margin-bottom: 20px;
+				font-size: 2em;
+				color: white;
+				text-shadow: 2px 2px #000;
+			}
+
+			#leaves{
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+
+			#leaves img{
+				display: block;
+				width: 80px;
+			}
 		</style>
 
-		{{label}} {{value}} {{unit}}
+		<p id="label">{{label}}</p>
+
+		<section id="leaves">
+			<template repeat="{{leaf in leaves}}">
+			<img src="{{leafIcon[leaf]}}" />
+			</template>
+		</section>
 
 	</template>
 	<script>
 		Polymer({
+
+			leafCount: 4,
+
 			ready: function(){
 				this.super();
+
+				this.leaves = [];
+
+				this.leafIcon = [
+					"bower_components/sensor-leaf/leaf_off.png",
+					"bower_components/sensor-leaf/leaf.png"
+				];
+
+				for(var i=0;i<this.leafCount;i++){
+					this.leaves.push(0);
+				}
+
+			},
+
+			setLevel: function(level){
+				for(var i=0; i<this.leaves.length; i++){
+					if(i<=level) this.leaves[i] = 1;
+					else this.leaves[i] = 0;
+				}
+			},
+
+			valueChanged: function(){
+				var level = Math.round(( this.value / (this.max - this.min) ) * this.leafCount);
+
+				this.setLevel(level);
 			}
 		})
 	</script>
