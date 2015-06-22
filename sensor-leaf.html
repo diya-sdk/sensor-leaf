@@ -1,0 +1,19 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../sensor-base/sensor-base.html">
+
+<polymer-element name="sensor-leaf" attributes="leafCount" extends="sensor-base">
+	<template>
+		<style>
+		</style>
+
+		{{label}} {{value}} {{unit}}
+
+	</template>
+	<script>
+		Polymer({
+			ready: function(){
+				this.super();
+			}
+		})
+	</script>
+</polymer-element>
