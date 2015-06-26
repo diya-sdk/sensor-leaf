@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../sensor-base/sensor-base.html">
+<link rel="import" href="../leaf-scale/leaf-scale.html">
 
 <polymer-element name="sensor-leaf" attributes="leafCount" extends="sensor-base">
 	<template>
@@ -23,24 +24,12 @@
 				text-shadow: 2px 2px #000;
 			}
 
-			#leaves{
-				display: flex;
-				flex-direction: row;
-				align-items: center;
-			}
-
-			#leaves img{
-				display: block;
-				width: 80px;
-			}
 		</style>
 
 		<p id="label">{{label}}</p>
 
-		<section id="leaves">
-			<template repeat="{{leaf in leaves}}">
-			<img src="{{leafIcon[leaf]}}" />
-			</template>
+		<leaf-scale id="scale" leafCount="{{leafCount}}"></leaf-scale>
+
 		</section>
 
 	</template>
@@ -51,31 +40,12 @@
 
 			ready: function(){
 				this.super();
-
-				this.leaves = [];
-
-				this.leafIcon = [
-					"bower_components/sensor-leaf/leaf_off.png",
-					"bower_components/sensor-leaf/leaf.png"
-				];
-
-				for(var i=0;i<this.leafCount;i++){
-					this.leaves.push(0);
-				}
-
-			},
-
-			setLevel: function(level){
-				for(var i=0; i<this.leaves.length; i++){
-					if(i<=level) this.leaves[i] = 1;
-					else this.leaves[i] = 0;
-				}
 			},
 
 			valueChanged: function(){
 				var level = Math.round(( this.value / (this.max - this.min) ) * this.leafCount);
 
-				this.setLevel(level);
+				this.$.scale.setLevel(level);
 			}
 		})
 	</script>

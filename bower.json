@@ -15,6 +15,7 @@
     "tests"
   ],
   "dependencies": {
-    "sensor-base": "partnering/sensor-base"
+    "sensor-base": "partnering/sensor-base",
+    "leaf-scale": "partnering/leaf-scale"
   }
 }
