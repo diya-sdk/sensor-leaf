@@ -43,7 +43,7 @@
 			},
 
 			valueChanged: function(){
-				var level = Math.round(( this.value / (this.max - this.min) ) * this.leafCount);
+				var level = ( this.value / (this.max - this.min) ) * this.leafCount;
 
 				this.$.scale.setLevel(level);
 			}
