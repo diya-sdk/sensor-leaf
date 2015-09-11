@@ -1,21 +1,22 @@
 {
-  "name": "sensor-leaf",
-  "version": "0.8.0",
-  "homepage": "https://github.com/partnering/sensor-leaf",
-  "authors": [
-    "Sylvain Mahe <sylv.mahe@gmail.com>"
-  ],
-  "main": "sensor-leaf.html",
-  "license": "LGPL v3.0",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
-  "dependencies": {
-    "sensor-base": "partnering/sensor-base",
-    "leaf-scale": "partnering/leaf-scale"
-  }
+	"name": "sensor-leaf",
+	"version": "0.8.0",
+	"homepage": "https://github.com/partnering/sensor-leaf",
+	"authors": [
+		"Sylvain Mahe <sylv.mahe@gmail.com>"
+	],
+	"main": "sensor-leaf.html",
+	"license": "LGPL v3.0",
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"test",
+		"tests"
+	],
+	"dependencies": {
+		"sensor-base": "partnering/sensor-base",
+		"leaf-scale": "partnering/leaf-scale"
+	},
+	"description": "Polymer WebComponent for displaying data for sensors as leafs"
 }
