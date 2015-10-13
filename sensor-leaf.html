@@ -2,9 +2,12 @@
 <link rel="import" href="../sensor-base/sensor-base.html">
 <link rel="import" href="../leaf-scale/leaf-scale.html">
 
-<polymer-element name="sensor-leaf" attributes="leafCount" extends="sensor-base">
-	<template>
-		<style>
+<!--
+    TODO(polyup): Inheriting from other custom elements is not yet supported.
+    See: https://www.polymer-project.org/1.0/docs/migration.html#inheritance
+ -->
+<dom-module id="sensor-leaf">
+  <style>
 			:host{
 				display: flex;
 				flex-direction: row;
@@ -25,28 +28,34 @@
 			}
 
 		</style>
+  <template>
 
 		<p id="label">{{label}}</p>
 
-		<leaf-scale id="scale" leafCount="{{leafCount}}"></leaf-scale>
+		<leaf-scale id="scale" leafcount="{{leafCount}}"></leaf-scale>
 
-		</section>
+		
 
 	</template>
-	<script>
-		Polymer({
-
-			leafCount: 4,
-
-			ready: function(){
-				this.super();
-			},
-
-			valueChanged: function(){
-				var level = ( this.value / (this.max - this.min) ) * this.leafCount;
-
-				this.$.scale.setLevel(level);
-			}
-		})
-	</script>
-</polymer-element>
+  <script>
+    Polymer({
+      is: 'sensor-leaf',
+      properties: {
+        leafCount: {
+          type: Number,
+          value: 4,
+          notify: true
+        },
+        value: { observer: 'valueChanged' }
+      },
+      ready: function () {
+        this.super();
+      },
+      valueChanged: function () {
+        var level = this.value / (this.max - this.min) * this.leafCount;
+        this.$.scale.setLevel(level);
+      },
+      extends: 'sensor-base'
+    });
+  </script>
+</dom-module>
