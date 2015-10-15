@@ -32,30 +32,28 @@
 
 		<p id="label">{{label}}</p>
 
-		<leaf-scale id="scale" leafcount="{{leafCount}}"></leaf-scale>
-
-		
+		<leaf-scale id="scale" leafcount="{{leafCount}}"></leaf-scale>		
 
 	</template>
   <script>
-    Polymer({
-      is: 'sensor-leaf',
-      properties: {
-        leafCount: {
-          type: Number,
-          value: 4,
-          notify: true
-        },
-        value: { observer: 'valueChanged' }
-      },
-      ready: function () {
-        this.super();
-      },
-      valueChanged: function () {
-        var level = this.value / (this.max - this.min) * this.leafCount;
-        this.$.scale.setLevel(level);
-      },
-      extends: 'sensor-base'
-    });
+	Polymer({
+		is: 'sensor-leaf',
+		properties: {
+			leafCount: {
+				type: Number,
+				value: 4,
+				notify: true
+			},
+			value: { observer: 'valueChanged' }
+		},
+		behaviors: [DiyaBehaviors.SensorBase],
+		ready: function () {
+			this.super();
+		},
+		valueChanged: function () {
+			var level = this.value / (this.max - this.min) * this.leafCount;
+			this.$.scale.setLevel(level);
+		}
+	});
   </script>
 </dom-module>
