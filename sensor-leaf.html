@@ -35,7 +35,8 @@
 		<leaf-scale id="scale" leafcount="{{leafCount}}"></leaf-scale>		
 
 	</template>
-  <script>
+</dom-module>
+<script>
 	Polymer({
 		is: 'sensor-leaf',
 		properties: {
@@ -48,12 +49,10 @@
 		},
 		behaviors: [DiyaBehaviors.SensorBase],
 		ready: function () {
-			this.super();
 		},
 		valueChanged: function () {
 			var level = this.value / (this.max - this.min) * this.leafCount;
 			this.$.scale.setLevel(level);
 		}
 	});
-  </script>
-</dom-module>
+</script>
