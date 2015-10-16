@@ -45,7 +45,9 @@
 				value: 4,
 				notify: true
 			},
-			value: { observer: 'valueChanged' }
+			value: { observer: 'valueChanged' },
+			min: { readonly: true },
+			max: { readonly: true }
 		},
 		behaviors: [DiyaBehaviors.SensorBase],
 		ready: function () {
