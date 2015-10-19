@@ -27,14 +27,28 @@
 				text-shadow: 2px 2px #000;
 			}
 
+			#sensor{
+				display: flex;
+				flex-direction: row;
+				justify-content: space-around;
+				align-items: center;
+				width: 100%;
+			}
+			#icon{
+				height: 80%;
+			}
+
 		</style>
   <template>
 
-		<p id="label">{{label}}</p>
+	<p id="label" if="{{_computeLabel(label,icon)}}">{{_computeLabel(label,icon)}}</p>
+	<div id="sensor">
+	  <img id="icon" src$="{{_computeSrc(icon)}}" if="{{icon}}" title="{{label}}">
+	  <leaf-scale id="scale" leafcount="{{leafCount}}"></leaf-scale>
+	</div>
 
-		<leaf-scale id="scale" leafcount="{{leafCount}}"></leaf-scale>		
 
-	</template>
+  </template>
 </dom-module>
 <script>
 	Polymer({
@@ -47,7 +61,17 @@
 			},
 			value: { observer: 'valueChanged' },
 			min: { readonly: true },
-			max: { readonly: true }
+			max: { readonly: true },
+			icon: {
+				type: String,
+				value: null,
+				notify: true
+			},
+			label: {
+				type: String,
+				value: null,
+				notify: true
+			}
 		},
 		behaviors: [DiyaBehaviors.SensorBase],
 		ready: function () {
@@ -55,6 +79,15 @@
 		valueChanged: function () {
 			var level = this.value / (this.max - this.min) * this.leafCount;
 			this.$.scale.setLevel(level);
+		},
+		_computeSrc: function (icon) {
+			return icon;
+		},
+		_computeLabel: function (label,icon) {
+			if(!icon)
+				return label;
+			else
+				return null;
 		}
 	});
 </script>
