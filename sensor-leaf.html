@@ -11,9 +11,8 @@
 			:host{
 				display: flex;
 				flex-direction: row;
-				justify-content: space-between;
 				align-items: center;
-
+				justify-content: space-between;
 				font-size: 1.7em;
 
 				overflow: hidden;
@@ -30,7 +29,7 @@
 			#sensor{
 				display: flex;
 				flex-direction: row;
-				justify-content: space-around;
+				justify-content: space-between;
 				align-items: center;
 				width: 100%;
 			}
@@ -43,7 +42,7 @@
 
 	<p id="label" if="{{_computeLabel(label,icon)}}">{{_computeLabel(label,icon)}}</p>
 	<div id="sensor">
-	  <img id="icon" src$="{{_computeSrc(icon)}}" if="{{icon}}" title="{{label}}">
+	  <img id="icon" src$="{{_computeSrc(icon)}}" if="{{icon}}">
 	  <leaf-scale id="scale" leafcount="{{leafCount}}"></leaf-scale>
 	</div>
 
