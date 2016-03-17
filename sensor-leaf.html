@@ -78,6 +78,8 @@
 		},
 		behaviors: [DiyaBehaviors.SensorBase],
 		ready: function () {
+			this.resolution = 0.001;
+			this.precision = 3;
 		},
 		valueChanged: function () {
 			var level = this.value / (this.max - this.min) * this.leafCount;
