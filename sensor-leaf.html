@@ -35,18 +35,22 @@
 			}
 			#icon{
 				height: 100%;
-				width: auto;
 			}
 			leaf-scale{
 				height: 100%;
-				width: auto;
 			}
 
 		</style>
   <template>
 	<div id="sensor">
-	  <p id="label" if="{{_computeLabel(label,icon)}}">{{_computeLabel(label,icon)}}</p>
-	  <img id="icon" src$="{{_computeSrc(icon)}}" if="{{icon}}">
+	  <template is="dom-if" if="{{displayLabel}}">
+		<div>
+		  <p id="label">{{_computeLabel(label,icon)}}</p>
+		</div>
+	  </template>
+	  <template is="dom-if" if="{{displayIcon}}">
+		<img id="icon" src$="{{_computeSrc(icon)}}" if="{{icon}}">
+	  </template>
 	  <leaf-scale id="scale" leaf-count="{{leafCount}}"></leaf-scale>
 	</div>
 
@@ -74,6 +78,14 @@
 				type: String,
 				value: null,
 				notify: true
+			},
+			displayLabel: {
+				type: Boolean,
+				value: true
+			},
+			displayIcon: {
+				type: Boolean,
+				value: false
 			}
 		},
 		behaviors: [DiyaBehaviors.SensorBase],
@@ -89,10 +101,16 @@
 			return icon;
 		},
 		_computeLabel: function (label,icon) {
-			if(!icon)
+			if(!icon) {
+				this.displayLabel=true;
+				this.displayIcon=false;
 				return label;
-			else
-				return null;
+			}
+			else {
+				this.displayLabel=false;
+				this.displayIcon=true;
+				return "";
+			}
 		}
 	});
 </script>
