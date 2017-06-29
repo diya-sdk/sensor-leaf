@@ -1,6 +1,6 @@
 {
 	"name": "sensor-leaf",
-	"version": "0.8.0",
+	"version": "1.0.2",
 	"homepage": "https://github.com/partnering/sensor-leaf",
 	"authors": [
 		"Sylvain Mahe <sylv.mahe@gmail.com>"
@@ -15,8 +15,8 @@
 		"tests"
 	],
 	"dependencies": {
-		"sensor-base": "partnering/sensor-base#1.0.0",
-		"leaf-scale": "partnering/leaf-scale#1.0.0"
+		"sensor-base": "partnering/sensor-base#1.0.1",
+		"leaf-scale": "partnering/leaf-scale#1.0.1"
 	},
 	"description": "Polymer WebComponent for displaying data for sensors as leafs"
 }
