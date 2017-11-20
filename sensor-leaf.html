@@ -45,7 +45,7 @@
 	<div id="sensor">
 	  <template is="dom-if" if="{{displayLabel}}">
 		<div>
-		  <p id="label">{{_computeLabel(label,icon)}}</p>
+		  <p id="label">{{_computeLabel(name,icon)}}</p>
 		</div>
 	  </template>
 	  <template is="dom-if" if="{{displayIcon}}">
@@ -100,11 +100,11 @@
 		_computeSrc: function (icon) {
 			return icon;
 		},
-		_computeLabel: function (label,icon) {
+		_computeLabel: function (name,icon) {
 			if(!icon) {
 				this.displayLabel=true;
 				this.displayIcon=false;
-				return label;
+				return LANG[this.name.toLowerCase()+"_label"];
 			}
 			else {
 				this.displayLabel=false;
