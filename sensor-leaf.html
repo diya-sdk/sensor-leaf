@@ -38,9 +38,12 @@
 			}
 			leaf-scale{
 				height: 100%;
-			}
+        --img-width: var(--leaf-width);
+        --img-padleft: var(--leaf-padleft);
+        --img-padright: var(--leaf-padright);
+      }
 
-		</style>
+	</style>
   <template>
 	<div id="sensor">
 	  <template is="dom-if" if="{{displayLabel}}">
