@@ -15,7 +15,7 @@
 		"tests"
 	],
 	"dependencies": {
-		"sensor-base": "partnering/sensor-base#1.0.1",
+		"sensor-base": "partnering/sensor-base#master",
 		"leaf-scale": "partnering/leaf-scale#1.0.1"
 	},
 	"description": "Polymer WebComponent for displaying data for sensors as leafs"
